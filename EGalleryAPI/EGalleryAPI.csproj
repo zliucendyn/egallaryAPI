@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6B0D1232-4E23-4CB5-A198-BFC38BEAF4C6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EGalleryAPI</RootNamespace>
+    <AssemblyName>EGalleryAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="eGallery\upload\AMResorts\AMResorts\zhaotest\ImageForScheduleCamp.PNG" />
+    <Content Include="eGallery\upload\AMResorts\AMResorts\zhaotest\pdf.png" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\1Golf.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\SnagIt.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\Testing - eGallery\SnagIt.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\Testing - eGallery\tn-SnagIt.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\tn-1Golf.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\tn-RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\tn-RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel Resort\tn-SnagIt.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12059.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12060.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12061.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12062.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12063.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12064.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12094.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12095.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\12096.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\1311604525_harbor-view.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\1314186033_RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\1314186461_RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\1314188235_RS_JavaImgChrome.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\1344518250_RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28003.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28038.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28039.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28040.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28041.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28042.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28043.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28050.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28051.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28055.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28056.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28057.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28059.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28062.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28067.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28070.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28073.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28074.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\28076.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\banner2alocal.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\banner2alocalwx.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\banner2aobs.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\banner2arfc.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\company-621.gif" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\desk_laptop.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\harbor-view.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\NewCH.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\OV_HeaderWinter11_02.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\OV_HeaderWinter11_03.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\OV_HeaderWinter11_04.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\pool3_d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\RS_JavaImgChrome.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\suite_01.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\test\test2\tn-Wind.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\test\test2\Wind.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\test\tn-y.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\test\y.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12059.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12060.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12061.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12062.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12063.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12064.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12094.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12095.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-12096.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-1311604525_harbor-view.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-1314186033_RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-1314186461_RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-1314188235_RS_JavaImgChrome.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-1344518250_RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28003.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28038.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28039.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28040.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28041.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28042.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28043.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28050.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28051.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28055.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28056.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28057.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28059.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28062.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28067.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28070.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28073.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28074.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-28076.JPG" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-banner2alocal.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-banner2alocalwx.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-banner2aobs.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-banner2arfc.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-company-621.gif" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-desk_laptop.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-harbor-view.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-NewCH.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-OV_HeaderWinter11_02.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-OV_HeaderWinter11_03.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-OV_HeaderWinter11_04.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-pool3_d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-RS_JavaImg.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-RS_JavaImgChrome.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-suite_01.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-_ ___ 30420955_1__d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\tn-_____ 0343 _pool3_d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\_ ___ 30420955_1__d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\_____ 0343 _pool3_d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\bday20.gif" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\DSC_0011.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\DSC_0035.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\DSC_0208.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\eye-chart2.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\LGoldman.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\Service_NewsEvents.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\test.png" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\testupload.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-bday20.gif" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-DSC_0011.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-DSC_0035.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-DSC_0208.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-eye-chart2.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-LGoldman.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-Service_NewsEvents.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-test.png" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-testupload.jpg" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\tn-twitter_icon.gif" />
+    <Content Include="eGallery\upload\cendyn\Cendyn_Hotel\test\twitter_icon.gif" />
+    <Content Include="eGallery\upload\cendyn\Files\eInsightLogo.gif" />
+    <Content Include="eGallery\upload\cendyn\Files\tn-eInsightLogo.gif" />
+    <Content Include="eGallery\upload\cendyn\test2\tn-____hii_2__jkj.png" />
+    <Content Include="eGallery\upload\cendyn\test2\____hii_2__jkj.png" />
+    <Content Include="eGallery\upload\cendyn\Test\1344517686_Task.gif" />
+    <Content Include="eGallery\upload\cendyn\Test\1344517694_CendynImg.png" />
+    <Content Include="eGallery\upload\cendyn\Test\19075788_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\19085000_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\19138156_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\19221730_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\26251473.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\26668241.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\33030060.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\7460328.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\7648101_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\boadrroom.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\BOARDROOM.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\businesspeople.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\business_maninmeeting.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\business_meeting.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\business_meeting2.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\CarnivalCruises_logo.gif" />
+    <Content Include="eGallery\upload\cendyn\Test\CendynImg.png" />
+    <Content Include="eGallery\upload\cendyn\Test\conferenceroom.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\desk_chair.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\help.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\high_tatras3.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\Task.gif" />
+    <Content Include="eGallery\upload\cendyn\Test\test2\suite_01.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\test2\tn-suite_01.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-1344517686_Task.gif" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-1344517694_CendynImg.png" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-19075788_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-19085000_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-19138156_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-19221730_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-26251473.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-26668241.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-33030060.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-7460328.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-7648101_1_.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-boadrroom.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-BOARDROOM.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-businesspeople.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-business_maninmeeting.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-business_meeting.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-business_meeting2.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-CarnivalCruises_logo.gif" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-CendynImg.png" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-conferenceroom.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-desk_chair.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-help.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-high_tatras3.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-RS_JavaImgIE.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-Task.gif" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-Wind.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-_ ___ 30420955_1__d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\tn-_____ 0343 _pool3_d600.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\Wind.jpg" />
+    <Content Include="eGallery\upload\cendyn\Test\_____ 0343 _pool3_d600.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\EGalleryImageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BeeFreeResultsDTO.cs" />
+    <Compile Include="Models\CommonMetaDTO.cs" />
+    <Compile Include="Models\DirectoryMetaDTO.cs" />
+    <Compile Include="Models\Extra.cs" />
+    <Compile Include="Models\FileMetaDTO.cs" />
+    <Compile Include="Models\FolderDTO.cs" />
+    <Compile Include="Models\FolderViewDTO.cs" />
+    <Compile Include="Models\FileDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\test\Thumbs.db" />
+    <Content Include="eGallery\upload\cendyn\Cendyn Hotel\Thumbs.db" />
+    <Content Include="eGallery\upload\cendyn\Files\sample211.pdf" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="eGallery\upload\AMResorts\AMResorts\-Files\" />
+    <Folder Include="eGallery\upload\AMResorts\AMResorts\test\" />
+    <Folder Include="eGallery\upload\AMResorts\Shared_Company\ZhaotestInsharedFolder\" />
+    <Folder Include="eGallery\upload\cendyn\-Files\" />
+    <Folder Include="eGallery\upload\cendyn\Cendyn Hotel\test\test2\test%27TEST^#%24#%40!~!%40#%24%24%25^^andand%28%29__\" />
+    <Folder Include="eGallery\upload\cendyn\Cendyn Hotel\test\test2\test\" />
+    <Folder Include="eGallery\upload\cendyn\Cendyn_Hotel\-Files\" />
+    <Folder Include="eGallery\upload\cendyn\Cendyn_Hotel_Resort\-Files\test\" />
+    <Folder Include="eGallery\upload\cendyn\New Folder\" />
+    <Folder Include="eGallery\upload\cendyn\Shared_Company\" />
+    <Folder Include="eGallery\upload\cendyn\test5\" />
+    <Folder Include="eGallery\upload\cendyn\Test\test1\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50703</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64594/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

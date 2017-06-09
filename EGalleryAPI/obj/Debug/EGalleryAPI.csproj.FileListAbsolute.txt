@@ -1,0 +1,54 @@
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\EGalleryAPI.dll.config
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\EGalleryAPI.dll
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\EGalleryAPI.pdb
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\Newtonsoft.Json.dll
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Net.Http.Formatting.dll
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.dll
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.WebHost.dll
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\Newtonsoft.Json.xml
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Net.Http.Formatting.xml
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.xml
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.WebHost.xml
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\obj\Debug\EGalleryAPI.csprojResolveAssemblyReference.cache
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\obj\Debug\EGalleryAPI.dll
+c:\users\zliu\documents\visual studio 2013\Projects\EGalleryAPI\EGalleryAPI\obj\Debug\EGalleryAPI.pdb
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Helpers.dll
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Mvc.dll
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Razor.dll
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.dll
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Helpers.xml
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Mvc.xml
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.Razor.xml
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.xml
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\zliu\Documents\Visual Studio 2013\Projects\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Razor.xml
+C:\EGalleryAPI\EGalleryAPI\bin\EGalleryAPI.dll.config
+C:\EGalleryAPI\EGalleryAPI\bin\EGalleryAPI.dll
+C:\EGalleryAPI\EGalleryAPI\bin\EGalleryAPI.pdb
+C:\EGalleryAPI\EGalleryAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\EGalleryAPI\EGalleryAPI\bin\Newtonsoft.Json.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Net.Http.Formatting.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Helpers.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.WebHost.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Mvc.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Razor.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Deployment.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Razor.dll
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Helpers.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Mvc.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Razor.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Deployment.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.WebPages.Razor.xml
+C:\EGalleryAPI\EGalleryAPI\bin\Newtonsoft.Json.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Net.Http.Formatting.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.xml
+C:\EGalleryAPI\EGalleryAPI\bin\System.Web.Http.WebHost.xml
+C:\EGalleryAPI\EGalleryAPI\obj\Debug\EGalleryAPI.dll
+C:\EGalleryAPI\EGalleryAPI\obj\Debug\EGalleryAPI.pdb
+C:\EGalleryAPI\EGalleryAPI\obj\Debug\EGalleryAPI.csprojResolveAssemblyReference.cache
