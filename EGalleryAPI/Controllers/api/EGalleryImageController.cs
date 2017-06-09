@@ -147,7 +147,7 @@ namespace EGalleryAPI.Controllers.api
                     DirectoryInfo di = new DirectoryInfo(path+folderpath);
                     DirectoryMetaDTO dir = new DirectoryMetaDTO();
                     dir.name = di.Name;
-                    dir.path = folderpath;
+                    dir.path = baseUrl + folderpath;
                     dir.mimeType = "application/directory";
                     dir.lastModified = di.LastWriteTime.Ticks;
                     dir.size = 0;
