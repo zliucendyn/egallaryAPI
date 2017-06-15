@@ -349,6 +349,12 @@
     <Folder Include="eGallery\upload\cendyn\test5\" />
     <Folder Include="eGallery\upload\cendyn\Test\test1\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EGalleryAPIData\EGalleryAPIData.csproj">
+      <Project>{25bb6daa-4a6a-4ccb-b941-af6df26af5f4}</Project>
+      <Name>EGalleryAPIData</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -9,6 +9,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using EGalleryAPIData;
+using EGalleryAPIData.Repo;
 
 namespace EGalleryAPI.Controllers.api
 {
@@ -53,15 +55,8 @@ namespace EGalleryAPI.Controllers.api
             HttpResponseMessage hrm = new HttpResponseMessage();
             BeeFreeResultsDTO result = new BeeFreeResultsDTO();
             bool isDir = true;
-            //if (String.IsNullOrEmpty(folderPath))
-            //{
-            //    path += baseUrl;
-            //}
-            //else
-            //{
-            //    isDir=folderPath[folderPath.Length-1]=='/';
-            //    path += @"/eGallery/upload/"+folderPath;
-            //}
+            EGalleryAPIRepo repo = new EGalleryAPIRepo();
+            baseUrl = repo.GetFolderPathByCompanyID(7098);
             if (String.IsNullOrEmpty(folderPath))
                 folderPath = "/";
             else
@@ -133,28 +128,28 @@ namespace EGalleryAPI.Controllers.api
         {
             HttpResponseMessage hrm = new HttpResponseMessage();
             string path = System.Web.Hosting.HostingEnvironment.MapPath("~");
-            BeeFreeResultsDTO result = new BeeFreeResultsDTO();
+            BeeFreeResultsDTO2 result = new BeeFreeResultsDTO2();
             string folderpath = null;
             if(Request.Headers.Contains("X-BEE-FSP-Directory"))
                 folderpath= Request.Headers.GetValues("X-BEE-FSP-Directory").First();
             if (folderpath == null || folderpath[0] != '/' || folderpath[folderpath.Length - 1] != '/')
                 hrm.StatusCode = HttpStatusCode.NotAcceptable;
             int index = FindLastSecondSlashIndex(folderpath);
-            if (Directory.Exists(path + folderpath.Substring(0, index + 1)))
+            if (Directory.Exists(path + baseUrl + folderpath.Substring(0, index + 1)))
             {
-                if(!File.Exists(path+folderpath)){
-                    Directory.CreateDirectory(path+folderpath);
-                    DirectoryInfo di = new DirectoryInfo(path+folderpath);
+                if(!File.Exists(path + baseUrl + folderpath)){
+                    Directory.CreateDirectory(path + baseUrl + folderpath);
+                    DirectoryInfo di = new DirectoryInfo(path + baseUrl+ folderpath);
                     DirectoryMetaDTO dir = new DirectoryMetaDTO();
                     dir.name = di.Name;
-                    dir.path = baseUrl + folderpath;
+                    dir.path = folderpath.Substring(0,folderpath.Length-1);
                     dir.mimeType = "application/directory";
-                    dir.lastModified = di.LastWriteTime.Ticks;
+                    dir.lastModified = di.LastWriteTime.Ticks / TimeSpan.TicksPerMillisecond;
                     dir.size = 0;
                     dir.permissions = "rw";
                     dir.itemCount = di.GetDirectories().Length + di.GetFiles().Length;
-                    dir.extra = null;
-                    BeeFreeResultsDataDTO bfr = new BeeFreeResultsDataDTO();
+                    dir.extra = new Extra();
+                    BeeFreeResultsDataDTO2 bfr = new BeeFreeResultsDataDTO2();
                     bfr.meta = dir;
                     result.status = "success";
                     result.data = bfr;
@@ -164,7 +159,7 @@ namespace EGalleryAPI.Controllers.api
                 }
             }
             string jsondata = JsonConvert.SerializeObject(result);
-            jsondata = jsondata.Replace("publicUrl", "public-url").Replace("lastModified", "last-modified").Replace("mineType", "mine-type");
+            jsondata = jsondata.Replace("publicUrl", "public-url").Replace("lastModified", "last-modified").Replace("mimeType", "mime-type").Replace("itemCount", "item-count");
             hrm.Content = new StringContent(jsondata, Encoding.UTF8, "application/json");
             return hrm;
         }

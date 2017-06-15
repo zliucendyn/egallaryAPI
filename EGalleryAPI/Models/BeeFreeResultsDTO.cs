@@ -11,6 +11,17 @@ namespace EGalleryAPI.Models
         public BeeFreeResultsDataDTO data { get; set; }
     }
 
+    public class BeeFreeResultsDTO2
+    {
+        public string status { get; set; }
+        public BeeFreeResultsDataDTO2 data { get; set; }
+    }
+
+    public class BeeFreeResultsDataDTO2
+    {
+        public CommonMetaDTO meta { get; set; }
+    }
+
     public class BeeFreeResultsDataDTO
     {
         public CommonMetaDTO meta { get; set; }
