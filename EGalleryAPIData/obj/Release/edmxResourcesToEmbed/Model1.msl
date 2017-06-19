@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eContact_Cendyn_TeamDevModelStoreContainer" CdmEntityContainer="eContact_Cendyn_TeamDevEntities">
+    <EntitySetMapping Name="eContact_Settings">
+      <EntityTypeMapping TypeName="eContact_Cendyn_TeamDevModel.eContact_Settings">
+        <MappingFragment StoreEntitySet="eContact_Settings">
+          <ScalarProperty Name="rowID" ColumnName="rowID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+          <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+          <ScalarProperty Name="SettingDescription" ColumnName="SettingDescription" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

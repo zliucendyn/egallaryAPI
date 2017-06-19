@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EGalleryAPIData.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,18 +9,30 @@ namespace EGalleryAPIData.Repo
 {
     public class EGalleryAPIRepo
     {
-        private eContact_Cendyn_TeamDevEntities context;
+        private EGalleryApiDataModelEntities context;
 
         public EGalleryAPIRepo()
         {
-            context = new eContact_Cendyn_TeamDevEntities();
+            context = new EGalleryApiDataModelEntities();
         }
 
         public string GetFolderPathByCompanyID(int companyId)
         {
-            if (context.eContact_Settings.Any(x => x.CompanyID == companyId && x.SettingName== "SEImageGalleryPath"))
-                return context.eContact_Settings.Where(x => x.CompanyID == companyId && x.SettingName == "SEImageGalleryPath").First().SettingValue;
+            if (context.eContact_Settings.Any(x => x.CompanyID == companyId) && context.Companies.Any(x => x.CompanyID == companyId))
+            {
+                return context.eContact_Settings.Where(x => x.CompanyID == companyId && x.SettingName == "SEImageGalleryPath").First().SettingValue + '/' + context.Companies.Where(x=>x.CompanyID==companyId).First().CompanyName;
+            }
             return "";
         }
+
+        public string GetClientFolderPathByCompanyID(int companyId)
+        {
+            if (context.eContact_Settings.Any(x => x.CompanyID == companyId))
+            {
+                return context.eContact_Settings.Where(x => x.CompanyID == companyId && x.SettingName == "SEImageGalleryPath").First().SettingValue;
+            }
+            return "";
+        }
+
     }
 }

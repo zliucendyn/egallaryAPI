@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EGalleryAPIDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="eContact_Settings">
+    <Key>
+      <PropertyRef Name="rowID" />
+    </Key>
+    <Property Name="rowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="SettingName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SettingValue" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SettingDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+      <PropertyRef Name="ListrakProductionID" />
+      <PropertyRef Name="ListrakReviewID" />
+      <PropertyRef Name="ListrakSuppressionListID" />
+    </Key>
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName_Other" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentCompany" Type="Int32" />
+    <Property Name="CompanyLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="WebSite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DBString" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DBString_eConcierge" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="VisitorIntelligence" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ROIReport" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SendDirect" Type="Boolean" />
+    <Property Name="GetCC" Type="Boolean" />
+    <Property Name="NoticeEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectEmailBcc" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Directory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SiteAdminLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TimeSheetProjectID" Type="Int32" />
+    <Property Name="TimeSheetProjectList" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HasSiteEditing" Type="Boolean" />
+    <Property Name="HasEventCalendar" Type="Boolean" />
+    <Property Name="HasBookEngine" Type="Boolean" />
+    <Property Name="HasConcierge" Type="Boolean" />
+    <Property Name="HasOnlineRetail" Type="Boolean" />
+    <Property Name="DynamicRecipient" Type="Boolean" />
+    <Property Name="HasForms" Type="Boolean" />
+    <Property Name="HasBlog" Type="Boolean" />
+    <Property Name="AvailSecurityGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HasMemberArea" Type="Boolean" />
+    <Property Name="ProjectWebFolder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HasMetaSiteEditing" Type="Boolean" />
+    <Property Name="HasSiteEAdmin" Type="Boolean" />
+    <Property Name="HaseGoogleAnalytics" Type="Boolean" />
+    <Property Name="HasConciergeAdmin" Type="Boolean" />
+    <Property Name="HaseCalednar" Type="Boolean" />
+    <Property Name="HaseGallery" Type="Boolean" />
+    <Property Name="HaseCommerce" Type="Boolean" />
+    <Property Name="HaseInsight" Type="Boolean" />
+    <Property Name="HasBuildTemplate" Type="Boolean" />
+    <Property Name="HasBounceEmail" Type="Boolean" />
+    <Property Name="HaseMenu" Type="Boolean" />
+    <Property Name="eMenuFolderPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HaseBookerReport" Type="Boolean" />
+    <Property Name="eBookerReportPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HaseContact" Type="Boolean" />
+    <Property Name="eContactFolderPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HasTravelScream" Type="Boolean" />
+    <Property Name="HaseIcePortal" Type="Boolean" />
+    <Property Name="HasDNN" Type="Boolean" />
+    <Property Name="ServiceHold" Type="Boolean" />
+    <Property Name="SendNotifyEmail" Type="Boolean" />
+    <Property Name="SpecialTemplate" Type="Boolean" />
+    <Property Name="ListrakProductionID" Type="Int32" Nullable="false" />
+    <Property Name="ListrakReviewID" Type="Int32" Nullable="false" />
+    <Property Name="ListrakSuppressionListID" Type="Int32" Nullable="false" />
+    <Property Name="ClientType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ID_Web_Intranet" Type="Int32" />
+    <Property Name="eGallery_eContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eCom_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eCom_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eCom_password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eCom_admin_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eCom_admin_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eCom_admin_password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eInsight_PropertyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IseInsightCorp" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="EGalleryApiDataModelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="eContact_Settings" EntityType="Self.eContact_Settings" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+  </EntityContainer>
+</Schema>

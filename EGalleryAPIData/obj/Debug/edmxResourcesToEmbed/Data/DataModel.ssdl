@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EGalleryAPIDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="eContact_Settings">
+    <Key>
+      <PropertyRef Name="rowID" />
+    </Key>
+    <Property Name="rowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="SettingName" Type="varchar" MaxLength="100" />
+    <Property Name="SettingValue" Type="varchar" MaxLength="2000" />
+    <Property Name="SettingDescription" Type="varchar" MaxLength="500" />
+    <Property Name="Category" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'eContact_Cendyn_TeamDev.v3.Company' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+      <PropertyRef Name="ListrakProductionID" />
+      <PropertyRef Name="ListrakReviewID" />
+      <PropertyRef Name="ListrakSuppressionListID" />
+    </Key>
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyName_Other" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="ParentCompany" Type="int" />
+    <Property Name="CompanyLogo" Type="nvarchar" MaxLength="255" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="255" />
+    <Property Name="DBString" Type="nvarchar" MaxLength="500" />
+    <Property Name="DBString_eConcierge" Type="nvarchar" MaxLength="500" />
+    <Property Name="VisitorIntelligence" Type="nvarchar" MaxLength="500" />
+    <Property Name="ROIReport" Type="nvarchar" MaxLength="500" />
+    <Property Name="SendDirect" Type="bit" />
+    <Property Name="GetCC" Type="bit" />
+    <Property Name="NoticeEmail" Type="nvarchar" MaxLength="150" />
+    <Property Name="ProjectEmailBcc" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="50" />
+    <Property Name="SiteAdminLink" Type="nvarchar" MaxLength="100" />
+    <Property Name="TimeSheetProjectID" Type="int" />
+    <Property Name="TimeSheetProjectList" Type="nvarchar" MaxLength="500" />
+    <Property Name="HasSiteEditing" Type="bit" />
+    <Property Name="HasEventCalendar" Type="bit" />
+    <Property Name="HasBookEngine" Type="bit" />
+    <Property Name="HasConcierge" Type="bit" />
+    <Property Name="HasOnlineRetail" Type="bit" />
+    <Property Name="DynamicRecipient" Type="bit" />
+    <Property Name="HasForms" Type="bit" />
+    <Property Name="HasBlog" Type="bit" />
+    <Property Name="AvailSecurityGroup" Type="nvarchar" MaxLength="255" />
+    <Property Name="HasMemberArea" Type="bit" />
+    <Property Name="ProjectWebFolder" Type="nvarchar" MaxLength="50" />
+    <Property Name="HasMetaSiteEditing" Type="bit" />
+    <Property Name="HasSiteEAdmin" Type="bit" />
+    <Property Name="HaseGoogleAnalytics" Type="bit" />
+    <Property Name="HasConciergeAdmin" Type="bit" />
+    <Property Name="HaseCalednar" Type="bit" />
+    <Property Name="HaseGallery" Type="bit" />
+    <Property Name="HaseCommerce" Type="bit" />
+    <Property Name="HaseInsight" Type="bit" />
+    <Property Name="HasBuildTemplate" Type="bit" />
+    <Property Name="HasBounceEmail" Type="bit" />
+    <Property Name="HaseMenu" Type="bit" />
+    <Property Name="eMenuFolderPath" Type="nvarchar" MaxLength="200" />
+    <Property Name="HaseBookerReport" Type="bit" />
+    <Property Name="eBookerReportPath" Type="nvarchar" MaxLength="200" />
+    <Property Name="HaseContact" Type="bit" />
+    <Property Name="eContactFolderPath" Type="nvarchar" MaxLength="200" />
+    <Property Name="HasTravelScream" Type="bit" />
+    <Property Name="HaseIcePortal" Type="bit" />
+    <Property Name="HasDNN" Type="bit" />
+    <Property Name="ServiceHold" Type="bit" />
+    <Property Name="SendNotifyEmail" Type="bit" />
+    <Property Name="SpecialTemplate" Type="bit" />
+    <Property Name="ListrakProductionID" Type="int" Nullable="false" />
+    <Property Name="ListrakReviewID" Type="int" Nullable="false" />
+    <Property Name="ListrakSuppressionListID" Type="int" Nullable="false" />
+    <Property Name="ClientType" Type="char" MaxLength="1" />
+    <Property Name="ID_Web_Intranet" Type="int" />
+    <Property Name="eGallery_eContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="eCom_username" Type="nvarchar" MaxLength="50" />
+    <Property Name="eCom_password" Type="nvarchar" MaxLength="50" />
+    <Property Name="eCom_password2" Type="nvarchar" MaxLength="50" />
+    <Property Name="eCom_admin_username" Type="nvarchar" MaxLength="50" />
+    <Property Name="eCom_admin_password" Type="nvarchar" MaxLength="50" />
+    <Property Name="eCom_admin_password2" Type="nvarchar" MaxLength="50" />
+    <Property Name="eInsight_PropertyCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="IseInsightCorp" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="EGalleryAPIDataModelStoreContainer">
+    <EntitySet Name="eContact_Settings" EntityType="Self.eContact_Settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" store:Type="Views" store:Schema="v3">
+      <DefiningQuery>SELECT 
+    [Company].[CompanyID] AS [CompanyID], 
+    [Company].[CompanyName] AS [CompanyName], 
+    [Company].[CompanyName_Other] AS [CompanyName_Other], 
+    [Company].[CompanyCode] AS [CompanyCode], 
+    [Company].[ParentCompany] AS [ParentCompany], 
+    [Company].[CompanyLogo] AS [CompanyLogo], 
+    [Company].[WebSite] AS [WebSite], 
+    [Company].[DBString] AS [DBString], 
+    [Company].[DBString_eConcierge] AS [DBString_eConcierge], 
+    [Company].[VisitorIntelligence] AS [VisitorIntelligence], 
+    [Company].[ROIReport] AS [ROIReport], 
+    [Company].[SendDirect] AS [SendDirect], 
+    [Company].[GetCC] AS [GetCC], 
+    [Company].[NoticeEmail] AS [NoticeEmail], 
+    [Company].[ProjectEmailBcc] AS [ProjectEmailBcc], 
+    [Company].[Directory] AS [Directory], 
+    [Company].[SiteAdminLink] AS [SiteAdminLink], 
+    [Company].[TimeSheetProjectID] AS [TimeSheetProjectID], 
+    [Company].[TimeSheetProjectList] AS [TimeSheetProjectList], 
+    [Company].[HasSiteEditing] AS [HasSiteEditing], 
+    [Company].[HasEventCalendar] AS [HasEventCalendar], 
+    [Company].[HasBookEngine] AS [HasBookEngine], 
+    [Company].[HasConcierge] AS [HasConcierge], 
+    [Company].[HasOnlineRetail] AS [HasOnlineRetail], 
+    [Company].[DynamicRecipient] AS [DynamicRecipient], 
+    [Company].[HasForms] AS [HasForms], 
+    [Company].[HasBlog] AS [HasBlog], 
+    [Company].[AvailSecurityGroup] AS [AvailSecurityGroup], 
+    [Company].[HasMemberArea] AS [HasMemberArea], 
+    [Company].[ProjectWebFolder] AS [ProjectWebFolder], 
+    [Company].[HasMetaSiteEditing] AS [HasMetaSiteEditing], 
+    [Company].[HasSiteEAdmin] AS [HasSiteEAdmin], 
+    [Company].[HaseGoogleAnalytics] AS [HaseGoogleAnalytics], 
+    [Company].[HasConciergeAdmin] AS [HasConciergeAdmin], 
+    [Company].[HaseCalednar] AS [HaseCalednar], 
+    [Company].[HaseGallery] AS [HaseGallery], 
+    [Company].[HaseCommerce] AS [HaseCommerce], 
+    [Company].[HaseInsight] AS [HaseInsight], 
+    [Company].[HasBuildTemplate] AS [HasBuildTemplate], 
+    [Company].[HasBounceEmail] AS [HasBounceEmail], 
+    [Company].[HaseMenu] AS [HaseMenu], 
+    [Company].[eMenuFolderPath] AS [eMenuFolderPath], 
+    [Company].[HaseBookerReport] AS [HaseBookerReport], 
+    [Company].[eBookerReportPath] AS [eBookerReportPath], 
+    [Company].[HaseContact] AS [HaseContact], 
+    [Company].[eContactFolderPath] AS [eContactFolderPath], 
+    [Company].[HasTravelScream] AS [HasTravelScream], 
+    [Company].[HaseIcePortal] AS [HaseIcePortal], 
+    [Company].[HasDNN] AS [HasDNN], 
+    [Company].[ServiceHold] AS [ServiceHold], 
+    [Company].[SendNotifyEmail] AS [SendNotifyEmail], 
+    [Company].[SpecialTemplate] AS [SpecialTemplate], 
+    [Company].[ListrakProductionID] AS [ListrakProductionID], 
+    [Company].[ListrakReviewID] AS [ListrakReviewID], 
+    [Company].[ListrakSuppressionListID] AS [ListrakSuppressionListID], 
+    [Company].[ClientType] AS [ClientType], 
+    [Company].[ID_Web_Intranet] AS [ID_Web_Intranet], 
+    [Company].[eGallery_eContact] AS [eGallery_eContact], 
+    [Company].[eCom_username] AS [eCom_username], 
+    [Company].[eCom_password] AS [eCom_password], 
+    [Company].[eCom_password2] AS [eCom_password2], 
+    [Company].[eCom_admin_username] AS [eCom_admin_username], 
+    [Company].[eCom_admin_password] AS [eCom_admin_password], 
+    [Company].[eCom_admin_password2] AS [eCom_admin_password2], 
+    [Company].[eInsight_PropertyCode] AS [eInsight_PropertyCode], 
+    [Company].[IseInsightCorp] AS [IseInsightCorp]
+    FROM [v3].[Company] AS [Company]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

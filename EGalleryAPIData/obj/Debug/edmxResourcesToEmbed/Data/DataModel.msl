@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EGalleryAPIDataModelStoreContainer" CdmEntityContainer="EGalleryApiDataModelEntities">
+    <EntitySetMapping Name="eContact_Settings">
+      <EntityTypeMapping TypeName="EGalleryAPIDataModel.eContact_Settings">
+        <MappingFragment StoreEntitySet="eContact_Settings">
+          <ScalarProperty Name="rowID" ColumnName="rowID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+          <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+          <ScalarProperty Name="SettingDescription" ColumnName="SettingDescription" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="EGalleryAPIDataModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyName_Other" ColumnName="CompanyName_Other" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="ParentCompany" ColumnName="ParentCompany" />
+          <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="DBString" ColumnName="DBString" />
+          <ScalarProperty Name="DBString_eConcierge" ColumnName="DBString_eConcierge" />
+          <ScalarProperty Name="VisitorIntelligence" ColumnName="VisitorIntelligence" />
+          <ScalarProperty Name="ROIReport" ColumnName="ROIReport" />
+          <ScalarProperty Name="SendDirect" ColumnName="SendDirect" />
+          <ScalarProperty Name="GetCC" ColumnName="GetCC" />
+          <ScalarProperty Name="NoticeEmail" ColumnName="NoticeEmail" />
+          <ScalarProperty Name="ProjectEmailBcc" ColumnName="ProjectEmailBcc" />
+          <ScalarProperty Name="Directory" ColumnName="Directory" />
+          <ScalarProperty Name="SiteAdminLink" ColumnName="SiteAdminLink" />
+          <ScalarProperty Name="TimeSheetProjectID" ColumnName="TimeSheetProjectID" />
+          <ScalarProperty Name="TimeSheetProjectList" ColumnName="TimeSheetProjectList" />
+          <ScalarProperty Name="HasSiteEditing" ColumnName="HasSiteEditing" />
+          <ScalarProperty Name="HasEventCalendar" ColumnName="HasEventCalendar" />
+          <ScalarProperty Name="HasBookEngine" ColumnName="HasBookEngine" />
+          <ScalarProperty Name="HasConcierge" ColumnName="HasConcierge" />
+          <ScalarProperty Name="HasOnlineRetail" ColumnName="HasOnlineRetail" />
+          <ScalarProperty Name="DynamicRecipient" ColumnName="DynamicRecipient" />
+          <ScalarProperty Name="HasForms" ColumnName="HasForms" />
+          <ScalarProperty Name="HasBlog" ColumnName="HasBlog" />
+          <ScalarProperty Name="AvailSecurityGroup" ColumnName="AvailSecurityGroup" />
+          <ScalarProperty Name="HasMemberArea" ColumnName="HasMemberArea" />
+          <ScalarProperty Name="ProjectWebFolder" ColumnName="ProjectWebFolder" />
+          <ScalarProperty Name="HasMetaSiteEditing" ColumnName="HasMetaSiteEditing" />
+          <ScalarProperty Name="HasSiteEAdmin" ColumnName="HasSiteEAdmin" />
+          <ScalarProperty Name="HaseGoogleAnalytics" ColumnName="HaseGoogleAnalytics" />
+          <ScalarProperty Name="HasConciergeAdmin" ColumnName="HasConciergeAdmin" />
+          <ScalarProperty Name="HaseCalednar" ColumnName="HaseCalednar" />
+          <ScalarProperty Name="HaseGallery" ColumnName="HaseGallery" />
+          <ScalarProperty Name="HaseCommerce" ColumnName="HaseCommerce" />
+          <ScalarProperty Name="HaseInsight" ColumnName="HaseInsight" />
+          <ScalarProperty Name="HasBuildTemplate" ColumnName="HasBuildTemplate" />
+          <ScalarProperty Name="HasBounceEmail" ColumnName="HasBounceEmail" />
+          <ScalarProperty Name="HaseMenu" ColumnName="HaseMenu" />
+          <ScalarProperty Name="eMenuFolderPath" ColumnName="eMenuFolderPath" />
+          <ScalarProperty Name="HaseBookerReport" ColumnName="HaseBookerReport" />
+          <ScalarProperty Name="eBookerReportPath" ColumnName="eBookerReportPath" />
+          <ScalarProperty Name="HaseContact" ColumnName="HaseContact" />
+          <ScalarProperty Name="eContactFolderPath" ColumnName="eContactFolderPath" />
+          <ScalarProperty Name="HasTravelScream" ColumnName="HasTravelScream" />
+          <ScalarProperty Name="HaseIcePortal" ColumnName="HaseIcePortal" />
+          <ScalarProperty Name="HasDNN" ColumnName="HasDNN" />
+          <ScalarProperty Name="ServiceHold" ColumnName="ServiceHold" />
+          <ScalarProperty Name="SendNotifyEmail" ColumnName="SendNotifyEmail" />
+          <ScalarProperty Name="SpecialTemplate" ColumnName="SpecialTemplate" />
+          <ScalarProperty Name="ListrakProductionID" ColumnName="ListrakProductionID" />
+          <ScalarProperty Name="ListrakReviewID" ColumnName="ListrakReviewID" />
+          <ScalarProperty Name="ListrakSuppressionListID" ColumnName="ListrakSuppressionListID" />
+          <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+          <ScalarProperty Name="ID_Web_Intranet" ColumnName="ID_Web_Intranet" />
+          <ScalarProperty Name="eGallery_eContact" ColumnName="eGallery_eContact" />
+          <ScalarProperty Name="eCom_username" ColumnName="eCom_username" />
+          <ScalarProperty Name="eCom_password" ColumnName="eCom_password" />
+          <ScalarProperty Name="eCom_password2" ColumnName="eCom_password2" />
+          <ScalarProperty Name="eCom_admin_username" ColumnName="eCom_admin_username" />
+          <ScalarProperty Name="eCom_admin_password" ColumnName="eCom_admin_password" />
+          <ScalarProperty Name="eCom_admin_password2" ColumnName="eCom_admin_password2" />
+          <ScalarProperty Name="eInsight_PropertyCode" ColumnName="eInsight_PropertyCode" />
+          <ScalarProperty Name="IseInsightCorp" ColumnName="IseInsightCorp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

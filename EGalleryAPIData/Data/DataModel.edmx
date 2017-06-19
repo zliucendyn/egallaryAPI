@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EGalleryAPIDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="eContact_Settings">
+          <Key>
+            <PropertyRef Name="rowID" />
+          </Key>
+          <Property Name="rowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="SettingName" Type="varchar" MaxLength="100" />
+          <Property Name="SettingValue" Type="varchar" MaxLength="2000" />
+          <Property Name="SettingDescription" Type="varchar" MaxLength="500" />
+          <Property Name="Category" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eContact_Cendyn_TeamDev.v3.Company' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="ListrakProductionID" />
+            <PropertyRef Name="ListrakReviewID" />
+            <PropertyRef Name="ListrakSuppressionListID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyName_Other" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentCompany" Type="int" />
+          <Property Name="CompanyLogo" Type="nvarchar" MaxLength="255" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="255" />
+          <Property Name="DBString" Type="nvarchar" MaxLength="500" />
+          <Property Name="DBString_eConcierge" Type="nvarchar" MaxLength="500" />
+          <Property Name="VisitorIntelligence" Type="nvarchar" MaxLength="500" />
+          <Property Name="ROIReport" Type="nvarchar" MaxLength="500" />
+          <Property Name="SendDirect" Type="bit" />
+          <Property Name="GetCC" Type="bit" />
+          <Property Name="NoticeEmail" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProjectEmailBcc" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Directory" Type="nvarchar" MaxLength="50" />
+          <Property Name="SiteAdminLink" Type="nvarchar" MaxLength="100" />
+          <Property Name="TimeSheetProjectID" Type="int" />
+          <Property Name="TimeSheetProjectList" Type="nvarchar" MaxLength="500" />
+          <Property Name="HasSiteEditing" Type="bit" />
+          <Property Name="HasEventCalendar" Type="bit" />
+          <Property Name="HasBookEngine" Type="bit" />
+          <Property Name="HasConcierge" Type="bit" />
+          <Property Name="HasOnlineRetail" Type="bit" />
+          <Property Name="DynamicRecipient" Type="bit" />
+          <Property Name="HasForms" Type="bit" />
+          <Property Name="HasBlog" Type="bit" />
+          <Property Name="AvailSecurityGroup" Type="nvarchar" MaxLength="255" />
+          <Property Name="HasMemberArea" Type="bit" />
+          <Property Name="ProjectWebFolder" Type="nvarchar" MaxLength="50" />
+          <Property Name="HasMetaSiteEditing" Type="bit" />
+          <Property Name="HasSiteEAdmin" Type="bit" />
+          <Property Name="HaseGoogleAnalytics" Type="bit" />
+          <Property Name="HasConciergeAdmin" Type="bit" />
+          <Property Name="HaseCalednar" Type="bit" />
+          <Property Name="HaseGallery" Type="bit" />
+          <Property Name="HaseCommerce" Type="bit" />
+          <Property Name="HaseInsight" Type="bit" />
+          <Property Name="HasBuildTemplate" Type="bit" />
+          <Property Name="HasBounceEmail" Type="bit" />
+          <Property Name="HaseMenu" Type="bit" />
+          <Property Name="eMenuFolderPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="HaseBookerReport" Type="bit" />
+          <Property Name="eBookerReportPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="HaseContact" Type="bit" />
+          <Property Name="eContactFolderPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="HasTravelScream" Type="bit" />
+          <Property Name="HaseIcePortal" Type="bit" />
+          <Property Name="HasDNN" Type="bit" />
+          <Property Name="ServiceHold" Type="bit" />
+          <Property Name="SendNotifyEmail" Type="bit" />
+          <Property Name="SpecialTemplate" Type="bit" />
+          <Property Name="ListrakProductionID" Type="int" Nullable="false" />
+          <Property Name="ListrakReviewID" Type="int" Nullable="false" />
+          <Property Name="ListrakSuppressionListID" Type="int" Nullable="false" />
+          <Property Name="ClientType" Type="char" MaxLength="1" />
+          <Property Name="ID_Web_Intranet" Type="int" />
+          <Property Name="eGallery_eContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="eCom_username" Type="nvarchar" MaxLength="50" />
+          <Property Name="eCom_password" Type="nvarchar" MaxLength="50" />
+          <Property Name="eCom_password2" Type="nvarchar" MaxLength="50" />
+          <Property Name="eCom_admin_username" Type="nvarchar" MaxLength="50" />
+          <Property Name="eCom_admin_password" Type="nvarchar" MaxLength="50" />
+          <Property Name="eCom_admin_password2" Type="nvarchar" MaxLength="50" />
+          <Property Name="eInsight_PropertyCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="IseInsightCorp" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="EGalleryAPIDataModelStoreContainer">
+          <EntitySet Name="eContact_Settings" EntityType="Self.eContact_Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" store:Type="Views" store:Schema="v3">
+            <DefiningQuery>SELECT 
+    [Company].[CompanyID] AS [CompanyID], 
+    [Company].[CompanyName] AS [CompanyName], 
+    [Company].[CompanyName_Other] AS [CompanyName_Other], 
+    [Company].[CompanyCode] AS [CompanyCode], 
+    [Company].[ParentCompany] AS [ParentCompany], 
+    [Company].[CompanyLogo] AS [CompanyLogo], 
+    [Company].[WebSite] AS [WebSite], 
+    [Company].[DBString] AS [DBString], 
+    [Company].[DBString_eConcierge] AS [DBString_eConcierge], 
+    [Company].[VisitorIntelligence] AS [VisitorIntelligence], 
+    [Company].[ROIReport] AS [ROIReport], 
+    [Company].[SendDirect] AS [SendDirect], 
+    [Company].[GetCC] AS [GetCC], 
+    [Company].[NoticeEmail] AS [NoticeEmail], 
+    [Company].[ProjectEmailBcc] AS [ProjectEmailBcc], 
+    [Company].[Directory] AS [Directory], 
+    [Company].[SiteAdminLink] AS [SiteAdminLink], 
+    [Company].[TimeSheetProjectID] AS [TimeSheetProjectID], 
+    [Company].[TimeSheetProjectList] AS [TimeSheetProjectList], 
+    [Company].[HasSiteEditing] AS [HasSiteEditing], 
+    [Company].[HasEventCalendar] AS [HasEventCalendar], 
+    [Company].[HasBookEngine] AS [HasBookEngine], 
+    [Company].[HasConcierge] AS [HasConcierge], 
+    [Company].[HasOnlineRetail] AS [HasOnlineRetail], 
+    [Company].[DynamicRecipient] AS [DynamicRecipient], 
+    [Company].[HasForms] AS [HasForms], 
+    [Company].[HasBlog] AS [HasBlog], 
+    [Company].[AvailSecurityGroup] AS [AvailSecurityGroup], 
+    [Company].[HasMemberArea] AS [HasMemberArea], 
+    [Company].[ProjectWebFolder] AS [ProjectWebFolder], 
+    [Company].[HasMetaSiteEditing] AS [HasMetaSiteEditing], 
+    [Company].[HasSiteEAdmin] AS [HasSiteEAdmin], 
+    [Company].[HaseGoogleAnalytics] AS [HaseGoogleAnalytics], 
+    [Company].[HasConciergeAdmin] AS [HasConciergeAdmin], 
+    [Company].[HaseCalednar] AS [HaseCalednar], 
+    [Company].[HaseGallery] AS [HaseGallery], 
+    [Company].[HaseCommerce] AS [HaseCommerce], 
+    [Company].[HaseInsight] AS [HaseInsight], 
+    [Company].[HasBuildTemplate] AS [HasBuildTemplate], 
+    [Company].[HasBounceEmail] AS [HasBounceEmail], 
+    [Company].[HaseMenu] AS [HaseMenu], 
+    [Company].[eMenuFolderPath] AS [eMenuFolderPath], 
+    [Company].[HaseBookerReport] AS [HaseBookerReport], 
+    [Company].[eBookerReportPath] AS [eBookerReportPath], 
+    [Company].[HaseContact] AS [HaseContact], 
+    [Company].[eContactFolderPath] AS [eContactFolderPath], 
+    [Company].[HasTravelScream] AS [HasTravelScream], 
+    [Company].[HaseIcePortal] AS [HaseIcePortal], 
+    [Company].[HasDNN] AS [HasDNN], 
+    [Company].[ServiceHold] AS [ServiceHold], 
+    [Company].[SendNotifyEmail] AS [SendNotifyEmail], 
+    [Company].[SpecialTemplate] AS [SpecialTemplate], 
+    [Company].[ListrakProductionID] AS [ListrakProductionID], 
+    [Company].[ListrakReviewID] AS [ListrakReviewID], 
+    [Company].[ListrakSuppressionListID] AS [ListrakSuppressionListID], 
+    [Company].[ClientType] AS [ClientType], 
+    [Company].[ID_Web_Intranet] AS [ID_Web_Intranet], 
+    [Company].[eGallery_eContact] AS [eGallery_eContact], 
+    [Company].[eCom_username] AS [eCom_username], 
+    [Company].[eCom_password] AS [eCom_password], 
+    [Company].[eCom_password2] AS [eCom_password2], 
+    [Company].[eCom_admin_username] AS [eCom_admin_username], 
+    [Company].[eCom_admin_password] AS [eCom_admin_password], 
+    [Company].[eCom_admin_password2] AS [eCom_admin_password2], 
+    [Company].[eInsight_PropertyCode] AS [eInsight_PropertyCode], 
+    [Company].[IseInsightCorp] AS [IseInsightCorp]
+    FROM [v3].[Company] AS [Company]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EGalleryAPIDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="eContact_Settings">
+          <Key>
+            <PropertyRef Name="rowID" />
+          </Key>
+          <Property Name="rowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="SettingName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="SettingDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="ListrakProductionID" />
+            <PropertyRef Name="ListrakReviewID" />
+            <PropertyRef Name="ListrakSuppressionListID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName_Other" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentCompany" Type="Int32" />
+          <Property Name="CompanyLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WebSite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DBString" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DBString_eConcierge" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VisitorIntelligence" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ROIReport" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SendDirect" Type="Boolean" />
+          <Property Name="GetCC" Type="Boolean" />
+          <Property Name="NoticeEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectEmailBcc" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Directory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SiteAdminLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TimeSheetProjectID" Type="Int32" />
+          <Property Name="TimeSheetProjectList" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HasSiteEditing" Type="Boolean" />
+          <Property Name="HasEventCalendar" Type="Boolean" />
+          <Property Name="HasBookEngine" Type="Boolean" />
+          <Property Name="HasConcierge" Type="Boolean" />
+          <Property Name="HasOnlineRetail" Type="Boolean" />
+          <Property Name="DynamicRecipient" Type="Boolean" />
+          <Property Name="HasForms" Type="Boolean" />
+          <Property Name="HasBlog" Type="Boolean" />
+          <Property Name="AvailSecurityGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HasMemberArea" Type="Boolean" />
+          <Property Name="ProjectWebFolder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasMetaSiteEditing" Type="Boolean" />
+          <Property Name="HasSiteEAdmin" Type="Boolean" />
+          <Property Name="HaseGoogleAnalytics" Type="Boolean" />
+          <Property Name="HasConciergeAdmin" Type="Boolean" />
+          <Property Name="HaseCalednar" Type="Boolean" />
+          <Property Name="HaseGallery" Type="Boolean" />
+          <Property Name="HaseCommerce" Type="Boolean" />
+          <Property Name="HaseInsight" Type="Boolean" />
+          <Property Name="HasBuildTemplate" Type="Boolean" />
+          <Property Name="HasBounceEmail" Type="Boolean" />
+          <Property Name="HaseMenu" Type="Boolean" />
+          <Property Name="eMenuFolderPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HaseBookerReport" Type="Boolean" />
+          <Property Name="eBookerReportPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HaseContact" Type="Boolean" />
+          <Property Name="eContactFolderPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HasTravelScream" Type="Boolean" />
+          <Property Name="HaseIcePortal" Type="Boolean" />
+          <Property Name="HasDNN" Type="Boolean" />
+          <Property Name="ServiceHold" Type="Boolean" />
+          <Property Name="SendNotifyEmail" Type="Boolean" />
+          <Property Name="SpecialTemplate" Type="Boolean" />
+          <Property Name="ListrakProductionID" Type="Int32" Nullable="false" />
+          <Property Name="ListrakReviewID" Type="Int32" Nullable="false" />
+          <Property Name="ListrakSuppressionListID" Type="Int32" Nullable="false" />
+          <Property Name="ClientType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ID_Web_Intranet" Type="Int32" />
+          <Property Name="eGallery_eContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eCom_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eCom_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eCom_password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eCom_admin_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eCom_admin_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eCom_admin_password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eInsight_PropertyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IseInsightCorp" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="EGalleryApiDataModelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="eContact_Settings" EntityType="Self.eContact_Settings" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EGalleryAPIDataModelStoreContainer" CdmEntityContainer="EGalleryApiDataModelEntities">
+          <EntitySetMapping Name="eContact_Settings">
+            <EntityTypeMapping TypeName="EGalleryAPIDataModel.eContact_Settings">
+              <MappingFragment StoreEntitySet="eContact_Settings">
+                <ScalarProperty Name="rowID" ColumnName="rowID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+                <ScalarProperty Name="SettingDescription" ColumnName="SettingDescription" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="EGalleryAPIDataModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyName_Other" ColumnName="CompanyName_Other" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="ParentCompany" ColumnName="ParentCompany" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="DBString" ColumnName="DBString" />
+                <ScalarProperty Name="DBString_eConcierge" ColumnName="DBString_eConcierge" />
+                <ScalarProperty Name="VisitorIntelligence" ColumnName="VisitorIntelligence" />
+                <ScalarProperty Name="ROIReport" ColumnName="ROIReport" />
+                <ScalarProperty Name="SendDirect" ColumnName="SendDirect" />
+                <ScalarProperty Name="GetCC" ColumnName="GetCC" />
+                <ScalarProperty Name="NoticeEmail" ColumnName="NoticeEmail" />
+                <ScalarProperty Name="ProjectEmailBcc" ColumnName="ProjectEmailBcc" />
+                <ScalarProperty Name="Directory" ColumnName="Directory" />
+                <ScalarProperty Name="SiteAdminLink" ColumnName="SiteAdminLink" />
+                <ScalarProperty Name="TimeSheetProjectID" ColumnName="TimeSheetProjectID" />
+                <ScalarProperty Name="TimeSheetProjectList" ColumnName="TimeSheetProjectList" />
+                <ScalarProperty Name="HasSiteEditing" ColumnName="HasSiteEditing" />
+                <ScalarProperty Name="HasEventCalendar" ColumnName="HasEventCalendar" />
+                <ScalarProperty Name="HasBookEngine" ColumnName="HasBookEngine" />
+                <ScalarProperty Name="HasConcierge" ColumnName="HasConcierge" />
+                <ScalarProperty Name="HasOnlineRetail" ColumnName="HasOnlineRetail" />
+                <ScalarProperty Name="DynamicRecipient" ColumnName="DynamicRecipient" />
+                <ScalarProperty Name="HasForms" ColumnName="HasForms" />
+                <ScalarProperty Name="HasBlog" ColumnName="HasBlog" />
+                <ScalarProperty Name="AvailSecurityGroup" ColumnName="AvailSecurityGroup" />
+                <ScalarProperty Name="HasMemberArea" ColumnName="HasMemberArea" />
+                <ScalarProperty Name="ProjectWebFolder" ColumnName="ProjectWebFolder" />
+                <ScalarProperty Name="HasMetaSiteEditing" ColumnName="HasMetaSiteEditing" />
+                <ScalarProperty Name="HasSiteEAdmin" ColumnName="HasSiteEAdmin" />
+                <ScalarProperty Name="HaseGoogleAnalytics" ColumnName="HaseGoogleAnalytics" />
+                <ScalarProperty Name="HasConciergeAdmin" ColumnName="HasConciergeAdmin" />
+                <ScalarProperty Name="HaseCalednar" ColumnName="HaseCalednar" />
+                <ScalarProperty Name="HaseGallery" ColumnName="HaseGallery" />
+                <ScalarProperty Name="HaseCommerce" ColumnName="HaseCommerce" />
+                <ScalarProperty Name="HaseInsight" ColumnName="HaseInsight" />
+                <ScalarProperty Name="HasBuildTemplate" ColumnName="HasBuildTemplate" />
+                <ScalarProperty Name="HasBounceEmail" ColumnName="HasBounceEmail" />
+                <ScalarProperty Name="HaseMenu" ColumnName="HaseMenu" />
+                <ScalarProperty Name="eMenuFolderPath" ColumnName="eMenuFolderPath" />
+                <ScalarProperty Name="HaseBookerReport" ColumnName="HaseBookerReport" />
+                <ScalarProperty Name="eBookerReportPath" ColumnName="eBookerReportPath" />
+                <ScalarProperty Name="HaseContact" ColumnName="HaseContact" />
+                <ScalarProperty Name="eContactFolderPath" ColumnName="eContactFolderPath" />
+                <ScalarProperty Name="HasTravelScream" ColumnName="HasTravelScream" />
+                <ScalarProperty Name="HaseIcePortal" ColumnName="HaseIcePortal" />
+                <ScalarProperty Name="HasDNN" ColumnName="HasDNN" />
+                <ScalarProperty Name="ServiceHold" ColumnName="ServiceHold" />
+                <ScalarProperty Name="SendNotifyEmail" ColumnName="SendNotifyEmail" />
+                <ScalarProperty Name="SpecialTemplate" ColumnName="SpecialTemplate" />
+                <ScalarProperty Name="ListrakProductionID" ColumnName="ListrakProductionID" />
+                <ScalarProperty Name="ListrakReviewID" ColumnName="ListrakReviewID" />
+                <ScalarProperty Name="ListrakSuppressionListID" ColumnName="ListrakSuppressionListID" />
+                <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+                <ScalarProperty Name="ID_Web_Intranet" ColumnName="ID_Web_Intranet" />
+                <ScalarProperty Name="eGallery_eContact" ColumnName="eGallery_eContact" />
+                <ScalarProperty Name="eCom_username" ColumnName="eCom_username" />
+                <ScalarProperty Name="eCom_password" ColumnName="eCom_password" />
+                <ScalarProperty Name="eCom_password2" ColumnName="eCom_password2" />
+                <ScalarProperty Name="eCom_admin_username" ColumnName="eCom_admin_username" />
+                <ScalarProperty Name="eCom_admin_password" ColumnName="eCom_admin_password" />
+                <ScalarProperty Name="eCom_admin_password2" ColumnName="eCom_admin_password2" />
+                <ScalarProperty Name="eInsight_PropertyCode" ColumnName="eInsight_PropertyCode" />
+                <ScalarProperty Name="IseInsightCorp" ColumnName="IseInsightCorp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

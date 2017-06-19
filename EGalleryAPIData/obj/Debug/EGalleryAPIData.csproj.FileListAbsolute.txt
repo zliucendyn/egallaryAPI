@@ -5,6 +5,5 @@ C:\egallaryAPI\EGalleryAPIData\bin\Debug\EntityFramework.dll
 C:\egallaryAPI\EGalleryAPIData\bin\Debug\EntityFramework.SqlServer.dll
 C:\egallaryAPI\EGalleryAPIData\bin\Debug\EntityFramework.xml
 C:\egallaryAPI\EGalleryAPIData\bin\Debug\EntityFramework.SqlServer.xml
-C:\egallaryAPI\EGalleryAPIData\obj\Debug\EGalleryAPIData.csprojResolveAssemblyReference.cache
 C:\egallaryAPI\EGalleryAPIData\obj\Debug\EGalleryAPIData.dll
 C:\egallaryAPI\EGalleryAPIData\obj\Debug\EGalleryAPIData.pdb

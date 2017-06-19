@@ -1,0 +1,10 @@
+C:\egallaryAPI\EGalleryAPIData\bin\Release\EGalleryAPIData.dll.config
+C:\egallaryAPI\EGalleryAPIData\bin\Release\EGalleryAPIData.dll
+C:\egallaryAPI\EGalleryAPIData\bin\Release\EGalleryAPIData.pdb
+C:\egallaryAPI\EGalleryAPIData\bin\Release\EntityFramework.dll
+C:\egallaryAPI\EGalleryAPIData\bin\Release\EntityFramework.SqlServer.dll
+C:\egallaryAPI\EGalleryAPIData\bin\Release\EntityFramework.xml
+C:\egallaryAPI\EGalleryAPIData\bin\Release\EntityFramework.SqlServer.xml
+C:\egallaryAPI\EGalleryAPIData\obj\Release\EGalleryAPIData.csprojResolveAssemblyReference.cache
+C:\egallaryAPI\EGalleryAPIData\obj\Release\EGalleryAPIData.dll
+C:\egallaryAPI\EGalleryAPIData\obj\Release\EGalleryAPIData.pdb
