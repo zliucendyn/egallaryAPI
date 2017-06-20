@@ -22,24 +22,27 @@ namespace EGalleryAPI.Controllers.api
         public HttpResponseMessage GetIFolderInfo(string folderPath)
         {
             string path = System.Web.Hosting.HostingEnvironment.MapPath("~");
-            bool isDir = true;
             bool rootPath = String.IsNullOrEmpty(folderPath);
+            //For c# webapi, if the request comes like api/egallery/, the last forward slash will be removed
+            //in that case need to manual add the forward slash.
             if (rootPath)
                 folderPath = "/";
             else
                 folderPath = "/" + folderPath;
             bool isShareCompany = folderPath.Contains("Shared_Company");
             bool isStock = folderPath.Contains("Stock");
-            isDir = folderPath[folderPath.Length - 1] == '/';
+            bool isDir = folderPath[folderPath.Length - 1] == '/';
+            // This Section is to check if the folderpath is point to stock or sharedcompany, if yes, we need to do different logic.
+            // the reason to do this is the stock and shared company folder has different location then the property folder
             if (isStock)
             {
                 return GetDataForStock(path, folderPath, isDir);
             }else if (isShareCompany)
             {
-                return GetDataForShareFolder(path, folderPath, 7055, isDir);
+                return GetDataForShareFolder(path, folderPath, 621, isDir);
             }else
             {
-                return GetDataForPropertyFolder(path, folderPath, 7055, isDir, rootPath);
+                return GetDataForPropertyFolder(path, folderPath, 621, isDir, rootPath);
             }
         }
 
@@ -95,6 +98,7 @@ namespace EGalleryAPI.Controllers.api
             return 0;
         }
 
+        // This function is to handle the request which goes to the stock folder, stock folder is shared by clients
         private HttpResponseMessage GetDataForStock(string path, string folderPath, bool isDir)
         {
             HttpResponseMessage hrm = new HttpResponseMessage();
@@ -128,7 +132,7 @@ namespace EGalleryAPI.Controllers.api
                 {
                     FileInfo fi = new FileInfo(path);
                     result.status = "success";
-                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath, fi.LastWriteTime.Ticks, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath);
+                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath, fi.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath);
                     BeeFreeResultsDataDTO datares = new BeeFreeResultsDataDTO();
                     datares.meta = file;
                     result.data = datares;
@@ -144,6 +148,8 @@ namespace EGalleryAPI.Controllers.api
                     hrm.StatusCode = HttpStatusCode.NotFound;
                 }
             }
+            //the bee free api need the some property has '-', which is not support in C# as Property
+            //so I change them in json string, then it could be understand by bee free
             string jsondata = JsonConvert.SerializeObject(result);
             jsondata = jsondata.Replace("publicUrl", "public-url").Replace("lastModified", "last-modified").Replace("mimeType", "mime-type").Replace("itemCount", "item-count");
             hrm.Content = new StringContent(jsondata, Encoding.UTF8, "application/json");
@@ -170,10 +176,20 @@ namespace EGalleryAPI.Controllers.api
                 }
                 else
                 {
-                    hrm.StatusCode = HttpStatusCode.NotFound;
-                    result.status = "fail";
-                    result.data.message = "Folder Not Found";
-                    result.data.details = path + " not exists";
+                    if(folderPath== "Shared_Company/")
+                    {
+                        Directory.CreateDirectory(path);
+                        result.status = "success";
+                        result.data = GetFolderView(path, folderPath, baseUrl);
+                        hrm.StatusCode = HttpStatusCode.OK;
+                    }
+                    else
+                    {
+                        hrm.StatusCode = HttpStatusCode.NotFound;
+                        result.status = "fail";
+                        result.data.message = "Folder Not Found";
+                        result.data.details = path + " not exists";
+                    }
                 }
             }
             else
@@ -184,7 +200,7 @@ namespace EGalleryAPI.Controllers.api
                 {
                     FileInfo fi = new FileInfo(path);
                     result.status = "success";
-                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath, fi.LastWriteTime.Ticks, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath);
+                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath, fi.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath);
                     BeeFreeResultsDataDTO datares = new BeeFreeResultsDataDTO();
                     datares.meta = file;
                     result.data = datares;
@@ -201,6 +217,8 @@ namespace EGalleryAPI.Controllers.api
                 }
             }
             string jsondata = JsonConvert.SerializeObject(result);
+            //the bee free api need the some property has '-', which is not support in C# as Property
+            //so I change them in json string, then it could be understand by bee free
             jsondata = jsondata.Replace("publicUrl", "public-url").Replace("lastModified", "last-modified").Replace("mimeType", "mime-type").Replace("itemCount", "item-count");
             hrm.Content = new StringContent(jsondata, Encoding.UTF8, "application/json");
             return hrm;
@@ -211,7 +229,7 @@ namespace EGalleryAPI.Controllers.api
             HttpResponseMessage hrm = new HttpResponseMessage();
             BeeFreeResultsDTO result = new BeeFreeResultsDTO();
             EGalleryAPIRepo repo = new EGalleryAPIRepo();
-            string baseUrl = repo.GetFolderPathByCompanyID(7055);
+            string baseUrl = repo.GetFolderPathByCompanyID(compantid);
             if (String.IsNullOrEmpty(baseUrl))
             {
                 //need to check baseUrl value
@@ -260,7 +278,7 @@ namespace EGalleryAPI.Controllers.api
                 {
                     FileInfo fi = new FileInfo(path);
                     result.status = "success";
-                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath, fi.LastWriteTime.Ticks, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath);
+                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath, fi.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath, ConfigurationManager.AppSettings["FileSystemPath"] + folderPath);
                     BeeFreeResultsDataDTO datares = new BeeFreeResultsDataDTO();
                     datares.meta = file;
                     result.data = datares;
@@ -302,18 +320,21 @@ namespace EGalleryAPI.Controllers.api
         {
             BeeFreeResultsDataDTO bfr = new BeeFreeResultsDataDTO();
             DirectoryInfo di = new DirectoryInfo(path);
-            DirectoryMetaDTO dir = new DirectoryMetaDTO("application/directory", folderPath == "/" ? "root" : di.Name, folderPath == "/" ? "/" : folderPath, di.LastWriteTime.Ticks / TimeSpan.TicksPerMillisecond,0,"rw", new Extra(), di.GetDirectories().Length + di.GetFiles().Length);
+            DirectoryMetaDTO dir = new DirectoryMetaDTO("application/directory", folderPath == "/" ? "root" : di.Name, folderPath == "/" ? baseUrl.Substring(baseUrl.LastIndexOf('/')) + '/' : folderPath, di.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), di.GetDirectories().Length + di.GetFiles().Where(x => !x.Name.StartsWith("tn-")).Count()) ;
             if (dir.itemCount != 0)
             {
                 IList<CommonMetaDTO> itemlists = new List<CommonMetaDTO>();
                 foreach (var subdir in di.GetDirectories())
                 {
-                    DirectoryMetaDTO newdir = new DirectoryMetaDTO("application/directory", subdir.Name, folderPath + subdir.Name + '/', di.LastWriteTime.Ticks / TimeSpan.TicksPerMillisecond,0,"rw", new Extra(), subdir.GetDirectories().Length + subdir.GetFiles().Length);
+                    DirectoryMetaDTO newdir = new DirectoryMetaDTO("application/directory", subdir.Name, folderPath + subdir.Name + '/', di.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks / TimeSpan.TicksPerMillisecond,0,"rw", new Extra(), subdir.GetDirectories().Length + subdir.GetFiles().Where(x => !x.Name.StartsWith("tn-")).Count());
                     itemlists.Add(newdir);
                 }
-                foreach (var fi in di.GetFiles())
+                //when get files exclude those thumbnails
+                foreach (var fi in di.GetFiles().Where(x=>!x.Name.StartsWith("tn-")))
                 {
-                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath + fi.Name, fi.LastWriteTime.Ticks / TimeSpan.TicksPerMillisecond, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + baseUrl + folderPath + fi.Name, ConfigurationManager.AppSettings["FileSystemPath"] + baseUrl + folderPath + fi.Name);
+                    //if folder has the image thumbnail, use the thumbnail, if not use the original pic
+                    string thumbnailUrl = di.GetFiles().Any(x => x.Name == "tn-" + fi.Name) ? ConfigurationManager.AppSettings["FileSystemPath"] + baseUrl + folderPath + "tn-" + fi.Name : ConfigurationManager.AppSettings["FileSystemPath"] + baseUrl + folderPath + fi.Name;
+                    FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderPath + fi.Name, fi.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks / TimeSpan.TicksPerMillisecond, fi.Length, "rw", null, ConfigurationManager.AppSettings["FileSystemPath"] + baseUrl + folderPath + fi.Name, thumbnailUrl);
                     itemlists.Add(file);
                 }
                 bfr.items = itemlists;
@@ -347,16 +368,18 @@ namespace EGalleryAPI.Controllers.api
             if(Directory.Exists(path.Substring(0, propertyIndex + 1) + "/Shared_Company/"))
             {
                 DirectoryInfo dir = new DirectoryInfo(path.Substring(0, propertyIndex + 1) + "/Shared_Company/");
-                DirectoryMetaDTO newdir = new DirectoryMetaDTO("application/directory", dir.Name, '/' + dir.Name + '/', dir.LastWriteTime.Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), dir.GetDirectories().Length + dir.GetFiles().Length);
+                DirectoryMetaDTO newdir = new DirectoryMetaDTO("application/directory", dir.Name, '/' + dir.Name + '/', dir.LastWriteTime.Subtract(new DateTime(1970,1,1)).Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), dir.GetDirectories().Length + dir.GetFiles().Length);
                 result.data.items.Add(newdir);
             }else
             {
-
+                DirectoryInfo dir = Directory.CreateDirectory(path.Substring(0, propertyIndex + 1) + "/Shared_Company/");
+                DirectoryMetaDTO newdir = new DirectoryMetaDTO("application/directory", dir.Name, '/' + dir.Name + '/', dir.LastWriteTime.Subtract(new DateTime(1970,1,1)).Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), dir.GetDirectories().Length + dir.GetFiles().Length);
+                result.data.items.Add(newdir);
             }
             if (Directory.Exists(path.Substring(0, clientIndex + 1) + "/Stock/"))
             {
                 DirectoryInfo dir = new DirectoryInfo(path.Substring(0, clientIndex + 1) + "/Stock/");
-                DirectoryMetaDTO newdir = new DirectoryMetaDTO("application/directory", dir.Name, '/' + dir.Name + '/', dir.LastWriteTime.Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), dir.GetDirectories().Length + dir.GetFiles().Length);
+                DirectoryMetaDTO newdir = new DirectoryMetaDTO("application/directory", dir.Name, '/' + dir.Name + '/', dir.LastWriteTime.Subtract(new DateTime(1970,1,1)).Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), dir.GetDirectories().Length + dir.GetFiles().Length);
                 result.data.items.Add(newdir);
             }
             else
