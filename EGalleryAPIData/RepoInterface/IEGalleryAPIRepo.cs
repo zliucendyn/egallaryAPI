@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace EGalleryAPIData.RepoInterface
 {
-    interface IEGalleryAPIRepo
+    public interface IEGalleryAPIRepo
     {
+        string GetFolderPathByCompanyID(int companyId);
+        string GetClientFolderPathByCompanyID(int companyId);
+
     }
 }

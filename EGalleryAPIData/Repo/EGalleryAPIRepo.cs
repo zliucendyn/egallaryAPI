@@ -1,4 +1,5 @@
 ﻿using EGalleryAPIData.Data;
+using EGalleryAPIData.RepoInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EGalleryAPIData.Repo
 {
-    public class EGalleryAPIRepo
+    public class EGalleryAPIRepo : IEGalleryAPIRepo
     {
         private EGalleryApiDataModelEntities context;
 

@@ -29,4 +29,5 @@ namespace EGalleryAPI.Models
         public string message { get; set; }
         public string details { get; set; }
     }
+
 }

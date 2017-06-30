@@ -7,7 +7,7 @@ namespace EGalleryAPI.Models
 {
     public class CommonMetaDTO
     {
-        public CommonMetaDTO(string mineType,string name,string path, long lastModified,long size,string permission,Extra extra)
+        public CommonMetaDTO(string mineType,string name,string path, long lastModified,long size,string permissions,Extra extra)
         {
             this.mimeType = mineType;
             this.name = name;

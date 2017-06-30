@@ -10,6 +10,8 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using EGalleryAPIData.Repo;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace EGalleryAPI.Controllers.api
 {
@@ -87,6 +89,80 @@ namespace EGalleryAPI.Controllers.api
         //    hrm.Content = new StringContent(jsondata, Encoding.UTF8, "application/json");
         //    return hrm;
         //}
+
+        [HttpPost]
+        [Route("api/EGallery")]
+        public HttpResponseMessage PostChangedImage()
+        {
+            HttpResponseMessage hrm = new HttpResponseMessage();
+            string path = System.Web.Hosting.HostingEnvironment.MapPath("~");
+            BeeFreeResultsDTO2 result = new BeeFreeResultsDTO2();
+            string folderpath = null;
+            string imageSource = null;
+            string imageName = null;
+            if (Request.Headers.Contains("X-BEE-FSP-Directory"))
+                folderpath = Request.Headers.GetValues("X-BEE-FSP-Directory").First();
+            if (Request.Headers.Contains("X-BEE-FileName"))
+                imageName = Request.Headers.GetValues("X-BEE-FileName").First();
+            if (Request.Headers.Contains("X-BEE-Source"))
+                imageSource = Request.Headers.GetValues("X-BEE-Source").First();
+            if (folderpath == null || folderpath[0] != '/' || folderpath[folderpath.Length - 1] != '/')
+                hrm.StatusCode = HttpStatusCode.NotAcceptable;
+            EGalleryAPIRepo repo = new EGalleryAPIRepo();
+            string baseUrl = repo.GetFolderPathByCompanyID(621);
+            path += baseUrl;
+            folderpath =  "/myfiles" + folderpath;
+            using (WebClient client = new WebClient())
+            {
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+                client.DownloadFile(new Uri(imageSource), path + folderpath + imageName);
+            }
+            return GetMetaDataForFile(path, folderpath, imageName);
+            //int index = FindLastSecondSlashIndex(folderpath);
+            //if (Directory.Exists(path  + folderpath.Substring(0, index + 1)))
+            //{
+            //    if (!File.Exists(path  + folderpath))
+            //    {
+            //        Directory.CreateDirectory(path  + folderpath);
+            //        DirectoryInfo di = new DirectoryInfo(path  + folderpath);
+            //        DirectoryMetaDTO dir = new DirectoryMetaDTO("application/directory", di.Name, folderpath.Substring(0, folderpath.Length - 1), di.LastWriteTime.Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), di.GetDirectories().Length + di.GetFiles().Length);
+            //        BeeFreeResultsDataDTO2 bfr = new BeeFreeResultsDataDTO2();
+            //        bfr.meta = dir;
+            //        result.status = "success";
+            //        result.data = bfr;
+            //        hrm.StatusCode = HttpStatusCode.OK;
+            //    }
+            //    else
+            //    {
+
+            //    }
+            //}
+            //string jsondata = JsonConvert.SerializeObject(result);
+            //jsondata = jsondata.Replace("publicUrl", "public-url").Replace("lastModified", "last-modified").Replace("mimeType", "mime-type").Replace("itemCount", "item-count");
+            //hrm.Content = new StringContent(jsondata, Encoding.UTF8, "application/json");
+            //return hrm;
+        }
+
+        public HttpResponseMessage GetMetaDataForFile(string path, string folderpath, string fileName)
+        {
+            HttpResponseMessage hrm = new HttpResponseMessage();
+            BeeFreeResultsDTO2 result = new BeeFreeResultsDTO2();
+            if (File.Exists(path+folderpath+fileName))
+            {
+                FileInfo fi = new FileInfo(path + folderpath + fileName);
+                result.status = "success";
+                FileMetaDTO file = new FileMetaDTO(CheckFileType(fi.Name), fi.Name, folderpath +fi.Name, fi.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks, fi.Length, "rw", new Extra(), ConfigurationManager.AppSettings["FileSystemPath"] + folderpath + fi.Name, ConfigurationManager.AppSettings["FileSystemPath"] + folderpath+ fi.Name);
+                BeeFreeResultsDataDTO2 datares = new BeeFreeResultsDataDTO2();
+                datares.meta = file;
+                result.data = datares;
+                hrm.StatusCode = HttpStatusCode.OK;
+            }
+            string jsondata = JsonConvert.SerializeObject(result);
+            jsondata = jsondata.Replace("publicUrl", "public-url").Replace("lastModified", "last-modified").Replace("mimeType", "mime-type").Replace("itemCount", "item-count");
+            hrm.Content = new StringContent(jsondata, Encoding.UTF8, "application/json");
+            return hrm;
+        }
 
         public int FindLastSecondSlashIndex(string path)
         {
@@ -320,7 +396,8 @@ namespace EGalleryAPI.Controllers.api
         {
             BeeFreeResultsDataDTO bfr = new BeeFreeResultsDataDTO();
             DirectoryInfo di = new DirectoryInfo(path);
-            DirectoryMetaDTO dir = new DirectoryMetaDTO("application/directory", folderPath == "/" ? "root" : di.Name, folderPath == "/" ? baseUrl.Substring(baseUrl.LastIndexOf('/')) + '/' : folderPath, di.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), di.GetDirectories().Length + di.GetFiles().Where(x => !x.Name.StartsWith("tn-")).Count()) ;
+            //To show the folder name add this baseUrl.Substring(baseUrl.LastIndexOf('/')) +
+            DirectoryMetaDTO dir = new DirectoryMetaDTO("application/directory", folderPath == "/" ? "root" : di.Name, folderPath == "/" ?  "/" : folderPath, di.LastWriteTime.Subtract(new DateTime(1970, 1, 1)).Ticks / TimeSpan.TicksPerMillisecond, 0, "rw", new Extra(), di.GetDirectories().Length + di.GetFiles().Where(x => !x.Name.StartsWith("tn-")).Count()) ;
             if (dir.itemCount != 0)
             {
                 IList<CommonMetaDTO> itemlists = new List<CommonMetaDTO>();
@@ -384,7 +461,11 @@ namespace EGalleryAPI.Controllers.api
             }
             else
             {
-
+                result.status = "fail";
+                BeeFreeResultsDataDTO datares = new BeeFreeResultsDataDTO();
+                datares.message = "Stock Not Found";
+                datares.details = path + " not exists";
+                result.data = datares;
             }
         }
 
